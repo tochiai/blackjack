@@ -13,6 +13,8 @@ class window.AppView extends Backbone.View
 
   initialize: ->
     @model.get('playerHand').on('busted', -> $('.hit-button, .stand-button').attr('disabled', true))
+    @model.get('playerHand').on('dealer', -> $('.hit-button, .stand-button').attr('disabled', true))
+    @model.get('playerHand').on('dealer', => @model.get('dealerHand').dealerPlay())
     @model.get('playerHand').on('busted', -> $('.player-hand-container h2').append('<span>--YOU BUSTED</span>'))
     @render()
 

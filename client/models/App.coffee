@@ -7,13 +7,15 @@ class window.App extends Backbone.Model
     @set 'dealerHand', deck.dealDealer()
 
   newHand: ->
-    if @get('deck').size() > 12
-      @set 'playerHand', @get('deck').dealPlayer()
-      @set 'dealerHand', @get('deck').dealDealer()
-      console.dir(@get('deck').size())
-    else
-      @initialize()
-      console.log('else')
-      console.dir(@get('deck').size())
+    console.log('reload')
+    window.location.reload(true)
+    # if @get('deck').size() > 12
+    #   @set 'playerHand', @get('deck').dealPlayer()
+    #   @set 'dealerHand', @get('deck').dealDealer()
+    #   console.dir(@get('deck').size())
+    # else
+    #   @initialize()
+    #   console.log('else')
+    #   console.dir(@get('deck').size())
 
 
