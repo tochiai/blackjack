@@ -37,13 +37,37 @@ class window.Hand extends Backbone.Collection
     @each(checkCards)
     array = @scores()
     if array.length == 1
-      while array[0] < 17
+      while array[0] < 17 and array.length == 1
         @hit()
         array = @scores()
+      if array.length == 2
+        while array[1] < 18
+          @hit()
+          array = @scores()
+        if array[1] > 21
+          while array[0] < 17
+            @hit()
+            array = @scores()
     else
       while array[1] < 18
         @hit()
         array = @scores()
+      if array[1] > 21
+        while array[0] < 17
+          @hit()
+          array = @scores()
+    @trigger('endHand', @)
+
+  bestScore: ->
+    arr = @scores()
+    if arr.length == 1
+      return arr[0]
+    else
+      if arr[1] > 21
+        return arr[0]
+      else
+        return arr[1]
+
 
 
 
